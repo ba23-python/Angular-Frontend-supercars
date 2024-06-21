@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class VehicleService {
 
-  url : string = "http://localhost:3000/api/vehicles"
+  url : string = "https://angular-frontend-supercars.vercel.app/api/vehicles"
   constructor(private http: HttpClient) { }
 
   getAll(){
