@@ -1,22 +1,33 @@
+<h2>Mis Reservas</h2>
+
+@if(bookings.length>0){
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Fecha inicio</th>
-        <th scope="col">Fecha fin</th>
-        <th scope="col">Marca</th>
-        <th scope="col">Modelo</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Descuento %</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{bookings[0].startDate.toLocaleDateString()}}</td>
-        <td>{{bookings[0].endDate.toLocaleDateString()}}</td>
-        <td>{{bookings[0].vehicle.brand}}</td>
-        <td>{{bookings[0].vehicle.model}}</td>
-        <td>{{bookings[0].price}}</td>
-        <td>{{bookings[0].discount}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">Fecha inicio</th>
+      <th scope="col">Fecha fin</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Descuento %</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(booking of bookings; track booking){
+    <tr>
+      <td>{{booking.startDate.toLocaleDateString()}}</td>
+      <td>{{booking.endDate.toLocaleDateString()}}</td>
+      <td>{{booking.vehicle.brand}}</td>
+      <td>{{booking.vehicle.model}}</td>
+      <td>{{booking.price}}</td>
+      <td>{{booking.discount}}</td>
+    </tr>
+
+    }
+
+  </tbody>
+</table>
+}
+@else {
+  <p>Aun no has hecho ninguna reserva. <a routerLink="/">Click aqui</a> para ver el catálogo</p>
+}
