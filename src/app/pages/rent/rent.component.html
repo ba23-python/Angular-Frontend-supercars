@@ -16,7 +16,7 @@
     <hr />
   </div>
   <div class="col-md-5">
-    <form [formGroup]="form" action="">
+    <form [formGroup]="form" action="" (ngSubmit)="enviar()">
       <div class="mb-3">
         <label class="form-label" for="">Fecha inicio</label>
         <input formControlName="fechaInicio" class="form-control" type="date" />
@@ -24,16 +24,13 @@
 
       <div class="mb-3">
         <label class="form-label" for="">Fecha fin</label>
-        <input formControlName="fechaFin"  class="form-control" type="date" />
+        <input formControlName="fechaFin" class="form-control" type="date" />
       </div>
 
       <div>
         <p>
           Tienes un código promocional?
-          <a
-            (click)="mostrarCodigoPromocional = !mostrarCodigoPromocional"
-            class="btn btn-danger btn-sm rounded-pill"
-          >
+          <a (click)="mostrarCodigoPromocional = !mostrarCodigoPromocional" class="btn btn-danger btn-sm rounded-pill">
             +
           </a>
         </p>
@@ -43,14 +40,14 @@
       <div class="mb-3">
         <label class="form-label" for="">Código promocional</label>
         <div class="input-group mb-3">
-            <input formControlName="codigoPromocional" class="form-control">
-            <button class="btn btn-outline-secondary" type="button" >
-               Validar
-                    <i class="fa fa-shopping-cart"></i>
-                
-                
-            </button>
-          </div>
+          <input formControlName="codigoPromocional" class="form-control">
+          <button class="btn btn-outline-secondary" type="button">
+            Validar
+            <i class="fa fa-shopping-cart"></i>
+
+
+          </button>
+        </div>
       </div>
       }
 
@@ -90,7 +87,13 @@
         </div>
       </div>
 
+      @if(authService.user){
       <button class="btn btn-success">Reservar</button>
+      }@else {
+      <div class="alert alert-danger"><i class="fa fa-circle-exclamation me-3"></i> <a routerLink="/login">Inicia
+          sesión</a> para continuar con la reserva</div>
+      }
+
     </form>
   </div>
   }
